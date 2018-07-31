@@ -49,6 +49,7 @@ public class InterfaceController {
 			return "wrong2";
 		} else {
 			service.delete(interface_id);
+			System.out.println("two");
 			return "success";
 		}
 	}
