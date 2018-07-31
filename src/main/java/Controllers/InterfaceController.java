@@ -15,17 +15,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class InterfaceController {
-	@Autowired
+	@Resource
 	private InterfaceService service;
 
-	// ¸ù¾ÝÃû³Æ²éÑ¯
+	// test
 	@RequestMapping("query")
 	public String query(@RequestParam(required = false) String interfacename, HttpServletRequest request, Model model) {
 		ArrayList<MyInterface> list = new ArrayList<MyInterface>();
+		System.out.println("");
 		if (interfacename.equals("")) {
 			return "wrong";
 		} else {
@@ -39,7 +41,7 @@ public class InterfaceController {
 		}
 	}
 
-	// É¾³ý
+	// É¾ï¿½ï¿½
 	@RequestMapping("del")
 	public String delete(@RequestParam(required = false) String interface_id, HttpServletRequest request, Model model) {
 		if (interface_id == null) {
@@ -50,7 +52,7 @@ public class InterfaceController {
 		}
 	}
 
-	// ¸üÐÂÌø×ª
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
 	@RequestMapping("jump")
 	public String jump(@RequestParam(required = false) String interface_id, HttpServletRequest request, Model model) {
 		if (interface_id == null) {
@@ -63,61 +65,61 @@ public class InterfaceController {
 		}
 	}
 
-	// ÐÂÔöÌø×ª
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ª
 	@RequestMapping("jump_add")
 	public String jump2(@RequestParam(required = false) String interface_id, HttpServletRequest request, Model model) {
 		return "add";
 	}
 
-	// ÐÂÔö
+	// ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping("add")
 	public String add(MyInterface my, HttpServletRequest request, Model model) {
-		String id = my.getId();// ±£´æidºÅ
-		String name = my.getName();// ±£´æÃû³Æ
-		String requestMethod = my.getRequestMethod();// ±£´æÇëÇóÄ£Ê½
-		String requestParameters = my.getRequestParameters();// ±£´æÇëÇó²ÎÊý
-		String responseParameter = my.getResponseParameter();// ±£´æÏìÓ¦²ÎÊý
-		String classification = my.getClassification();// ±£´æ·ÖÀà
-		//Ð£Ñé²»ÄÜÎª¿Õ
+		String id = my.getId();// ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½
+		String name = my.getName();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String requestMethod = my.getRequestMethod();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+		String requestParameters = my.getRequestParameters();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String responseParameter = my.getResponseParameter();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+		String classification = my.getClassification();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ð£ï¿½é²»ï¿½ï¿½Îªï¿½ï¿½
 		if (id.equals("") || name.equals("") || requestMethod.equals("") || requestParameters.equals("")
 				|| responseParameter.equals("") || classification.equals("")) {
 			return "wrong";
 		} else {
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// ÉèÖÃÈÕÆÚ¸ñÊ½
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½
 			my.setTime(df.format(new Date()).toString());
 			service.insert(my);
 			return "success";
 		}
 	}
 
-	// ÐÞ¸Ä
+	// ï¿½Þ¸ï¿½
 	@RequestMapping("modify_interface")
 	public String modify_interface(MyInterface my, HttpServletRequest request,
 			Model model) {
-		String id = my.getId();// ±£´æidºÅ
-		String name = my.getName();// ±£´æÃû³Æ
-		String requestMethod = my.getRequestMethod();// ±£´æÇëÇóÄ£Ê½
-		String requestParameters = my.getRequestParameters();// ±£´æÇëÇó²ÎÊý
-		String responseParameter = my.getResponseParameter();// ±£´æÏìÓ¦²ÎÊý
-		String classification = my.getClassification();// ±£´æ·ÖÀà
-		//Ð£Ñé²»ÄÜÎª¿Õ
+		String id = my.getId();// ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½
+		String name = my.getName();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String requestMethod = my.getRequestMethod();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
+		String requestParameters = my.getRequestParameters();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		String responseParameter = my.getResponseParameter();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+		String classification = my.getClassification();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		//Ð£ï¿½é²»ï¿½ï¿½Îªï¿½ï¿½
 		if (id.equals("") || name.equals("") || requestMethod.equals("") || requestParameters.equals("")
 				|| responseParameter.equals("") || classification.equals("")) {
 			return "wrong";
 		} else {
-			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// ÉèÖÃÈÕÆÚ¸ñÊ½
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½
 			my.setTime(df.format(new Date()).toString());
 			service.updateById(my);
 			return "success";
 		}
 	}
 
-	// ²éÑ¯ËùÓÐ
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "queryAll")
 	public String showCandida(@RequestParam(required = false) String candida, HttpServletRequest request, Model model) {
 		ArrayList<MyInterface> list = (ArrayList<MyInterface>) service.selectAll();
 		model.addAttribute("c_list", list);
-		System.out.println("²éÑ¯³É¹¦");
+		System.out.println("ï¿½ï¿½Ñ¯ï¿½É¹ï¿½");
 		return "queryshow";
 	}
 
