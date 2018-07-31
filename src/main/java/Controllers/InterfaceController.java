@@ -50,6 +50,7 @@ public class InterfaceController {
 		} else {
 			service.delete(interface_id);
 			System.out.println("two");
+			System.out.println("4");
 			return "success";
 		}
 	}
